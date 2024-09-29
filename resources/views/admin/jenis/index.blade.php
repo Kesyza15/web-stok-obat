@@ -21,6 +21,7 @@
 
         <h1>Daftar Jenis Obat</h1>
         <a href="{{ route('admin.jenis.create') }}" class="btn btn-primary" title="Tambah Jenis Obat"><i class="fas fa-plus"></i> Tambah Jenis Obat</a>
+
         @if (session('success'))
             <div class="alert alert-success mt-2 d-flex justify-content-between align-items-center">
                 <div>
@@ -79,7 +80,7 @@
                         <td>{{ $index + 1 }}</td>
                         <td>{{ $jeni->nama_jenis }}</td>
                         <td>
-                            <a href="{{ route('admin.jenis.edit', $jeni) }}" class="btn btn-warning btn-sm"title="Edit"><i class="fas fa-edit"></i> Edit</a>
+                            <a href="{{ route('admin.jenis.edit', $jeni) }}" class="btn btn-warning btn-sm" title="Edit"><i class="fas fa-edit"></i> Edit</a>
                             <form id="delete-form-{{ $jeni->id }}" action="{{ route('admin.jenis.destroy', $jeni) }}"
                                 method="POST" style="display:inline;">
                                 @csrf

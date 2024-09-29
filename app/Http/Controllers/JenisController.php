@@ -20,12 +20,11 @@ class JenisController extends Controller
 
     public function store(Request $request)
     {
-        // Validasi input dengan tambahan validasi unique untuk nama_jenis
+
         $request->validate([
             'nama_jenis' => 'required|string|max:255|unique:jenis,nama_jenis',
         ], [
-            'nama_jenis.required' => 'Nama jenis obat wajib diisi.',
-            'nama_jenis.unique' => 'Nama jenis obat sudah ada, silakan gunakan nama yang lain.',
+            'nama_jenis.unique' => 'Nama jenis obat sudah ada, mohon masukkan nama jenis obat yang lain.'
         ]);
 
         Jenis::create($request->all());
@@ -33,30 +32,27 @@ class JenisController extends Controller
         return redirect()->route('admin.jenis.index')->with('success', 'Jenis Obat berhasil ditambahkan.');
     }
 
-    public function edit(Jenis $jenis)
+    public function edit(Jenis $jeni)
     {
-        return view('admin.jenis.edit', compact('jenis'));
+        return view('admin.jenis.edit', compact('jeni'));
     }
 
-    public function update(Request $request, Jenis $jenis)
+    public function update(Request $request, Jenis $jeni)
     {
-        // Validasi input dengan pengecualian untuk ID yang sedang diedit
         $request->validate([
-            'nama_jenis' => 'required|string|max:255|unique:jenis,nama_jenis,' . $jenis->id,
+            'nama_jenis' => 'required|string|max:255|unique:jenis,nama_jenis',
         ], [
-            'nama_jenis.required' => 'Nama jenis obat wajib diisi.',
-            'nama_jenis.unique' => 'Nama jenis obat sudah ada, silakan gunakan nama yang berbeda.',
+            'nama_jenis.unique' => 'Nama jenis obat sudah ada, mohon masukkan nama jenis obat yang lain.'
         ]);
 
-        $jenis->update($request->all());
+        $jeni->update($request->all());
 
         return redirect()->route('admin.jenis.index')->with('warning', 'Jenis Obat berhasil diperbarui.');
     }
 
-    public function destroy(Jenis $jenis)
+    public function destroy(Jenis $jeni)
     {
-        $jenis->delete();
-
+        $jeni->delete();
         return redirect()->route('admin.jenis.index')->with('danger', 'Jenis Obat berhasil dihapus.');
     }
 }

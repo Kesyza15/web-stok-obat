@@ -10,7 +10,6 @@ use App\Http\Controllers\JenisController;
 use App\Http\Controllers\ObatController;
 use App\Http\Controllers\S_MasukController;
 use App\Http\Controllers\S_KeluarController;
-use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
 use Maatwebsite\Excel\Facades\Excel;

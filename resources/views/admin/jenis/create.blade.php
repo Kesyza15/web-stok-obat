@@ -19,7 +19,6 @@
         </div>
         <!-- /.content-header -->
 
-        <!-- Form Tambah Jenis Obat -->
         <h1>Tambah Jenis Obat</h1>
         <form action="{{ route('admin.jenis.store') }}" method="POST">
             @csrf
